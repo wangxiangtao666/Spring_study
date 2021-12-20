@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!--将关于mybatis的配置转成spring的一些配置引入-->
+    <import resource="spring-dao.xml"/>
+
+
+
+    <bean id="userMapper2" class="com.tao.mapper.UserMapperImpl2">
+        <!--使用继承父类SqlSessionDaoSupport的方法获取sqlSession,父类需要注入-->
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+</beans>

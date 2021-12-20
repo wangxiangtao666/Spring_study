@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--感觉就是用spring的方法替换mybatis的配置，最起码替换掉new对象的操作，其他配置还可以放在mybatis配置中-->
+    <!--dataSource使用spring的数据源替换mybatis的配置，这里使用一个类，注入属性值-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"><!--需要导入数据源的包-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="taotao"></property>
+    </bean>
+    <!--sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!--绑定mybatis配置 这些配置可以放在mybatis配置中,放在mybatis配置中必须加configLocation的配置，指定文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="mapperLocations" value="classpath:com/tao/mapper/*.xml"/>
+    </bean>
+
+    <!--SqlSessionTemplate:就是我们使用的sqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <!--这个类只能使用构造注入属性-->
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--默认调用无参构造，通过set方法设置属性值-->
+<!--    <bean id="user" class="com.tao.pojo.User">-->
+<!--        <property name="name" value="tao"></property>-->
+<!--    </bean>-->
+<!--1.有参构造第一种 下标赋值-->
+<!--    <bean id="user" class="com.tao.pojo.User">-->
+<!--        <constructor-arg index="0" value="tao1"></constructor-arg>-->
+<!--    </bean>-->
+<!--2.有参构造第二种，通过类型创建，有相同类型参数无法使用，所以不建议使用-->
+<!--    <bean id="user" class="com.tao.pojo.User">-->
+<!--&lt;!&ndash;        基本类型直接写，类类型要写权限类名&ndash;&gt;-->
+<!--        <constructor-arg type="java.lang.String" value="tao2"></constructor-arg>-->
+<!--    </bean>-->
+<!--3.有参构造第三种，通过参数名创建-->
+<!--    <bean id="user" class="com.tao.pojo.User">-->
+<!--        <constructor-arg name="name" value="tao3"></constructor-arg>-->
+<!--    </bean>-->
+<!--    起别名，只能起一个，所以不常用-->
+
+    <alias name="user" alias="userNew"></alias>
+<!--    id:bean的唯一标识符，相当于对象名
+        class:bean对象所对应的权限类名:包名+类型
+        name:也是起别名，还可以起多个，还可以通过不同符号分隔开
+-->
+    <bean id="user" class="com.tao.pojo.User" name="u2 u3,u4;u5">
+        <constructor-arg name="name" value="tao3"></constructor-arg>
+    </bean>
+</beans>

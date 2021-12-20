@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- services -->
+    <bean id="userDaoImpl1" class="com.tao.dao.UserDaoImpl1"></bean>
+    <bean id="userDaoImpl2" class="com.tao.dao.UserDaoImpl2"></bean>
+    <bean id="userService" class="com.tao.service.UserServiceImpl">
+        <property name="userDao" ref="userDaoImpl1"/>
+    </bean>
+<!--    ref:引用Spring容器中创建好的对象
+        value:基本数据类型
+-->
+</beans>

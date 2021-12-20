@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--开启注解支持-->
+    <context:annotation-config />
+    <bean id="dog" class="com.tao.pojo.Dog">
+        <property name="dogName" value="1"></property>
+    </bean>
+    <bean id="cat" class="com.tao.pojo.Cat">
+        <property name="catName" value="1"></property>
+    </bean>
+    <bean id="cat2" class="com.tao.pojo.Cat">
+        <property name="catName" value="2"></property>
+    </bean>
+    <!--<bean id="people" class="com.tao.pojo.People">-->
+    <!--    <property name="dog" ref="dog"></property>-->
+    <!--    <property name="cat" ref="cat"></property>-->
+    <!--    <property name="name" value="tao"></property>-->
+    <!--</bean>-->
+
+    <!--byName自动装配-->
+    <!--byName：会自动在容器上下文中寻找，和自己对象set方法后的值对应的bean(对象)id
+                需要保证所有bean的id唯一，并且id要和自动注入的属性set方法的值一致
+    -->
+    <!--<bean id="people" class="com.tao.pojo.People" autowire="byName">-->
+    <!--    <property name="name" value="tao"></property>-->
+    <!--</bean>-->
+
+    <!--byType自动装配-->
+    <!--byType:会自动在容器上下文中寻找，和自己对象属性类型相同的bean
+                需要保证bean的class唯一，全局只有这一个类型，查找和需要自动注入的属性类型一致的bean
+    -->
+    <!--<bean id="peopleA" class="com.tao.pojo.People" autowire="byType">-->
+    <!--    <property name="name" value="tao"></property>-->
+    <!--</bean>-->
+
+    <!--使用注解进行自动装配-->
+    <bean id="people" class="com.tao.pojo.People" ></bean>
+</beans>
